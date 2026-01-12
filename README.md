@@ -1,6 +1,6 @@
 # Asim Waqas's Research Portfolio
 
-Welcome to the portfolio website of Asim Waqas, Ph.D., an Applied Research Scientist at Moffitt Cancer Center. This website showcases my educational background, research interests, publications, and professional activities.
+Welcome to my website, I am Asim Waqas, Ph.D., a researcher at Moffitt Cancer Center. This website presents my educational background, research interests, publications, and professional activities.
 
 ## 🌐 Live Site
 
