@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Footer from '../components/Footer.astro';
+import { publications, preprints, bookChapters } from '../data/publications.js';
+---
+
+<Layout title="Publications | Asim Waqas, Ph.D.">
+  <Navbar />
+  
+  <div class="pt-24 pb-8 px-6 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <p class="section-label">Research Output</p>
+      <h1 class="section-title text-4xl md:text-5xl">Publications</h1>
+      <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+        A comprehensive list of my peer-reviewed publications, preprints, and book chapters.
+      </p>
+      <div class="flex justify-center gap-6 mt-6 text-sm">
+        <a 
+          href="https://scholar.google.com/citations?user=vq-Mr-sAAAAJ&hl=en" 
+          target="_blank" 
+          rel="noopener"
+          class="flex items-center gap-2 text-primary-500 hover:underline"
+        >
+          <i class="fas fa-graduation-cap"></i>
+          Google Scholar
+        </a>
+        <a 
+          href="https://orcid.org/0000-0002-6834-4710" 
+          target="_blank" 
+          rel="noopener"
+          class="flex items-center gap-2 text-primary-500 hover:underline"
+        >
+          <i class="fab fa-orcid"></i>
+          ORCID
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Peer-Reviewed Publications -->
+  <SectionContainer background="white">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-8 flex items-center gap-3">
+      <i class="fas fa-book text-primary-500"></i>
+      Peer-Reviewed Publications
+    </h2>
+    
+    <div class="space-y-6">
+      {publications.map((pub, index) => (
+        <article class="p-6 bg-gray-50 rounded-lg border-l-4 border-primary-500 hover:translate-x-1 transition-transform duration-300">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl font-display font-semibold text-gray-300 mt-1">{index + 1}</span>
+            <div class="flex-1">
+              <span class="text-xs font-semibold uppercase tracking-wider text-primary-500">
+                {pub.journal} ({pub.year})
+              </span>
+              <h3 class="font-display text-lg font-semibold text-gray-900 mt-2 leading-snug">
+                {pub.title}
+              </h3>
+              <p class="text-gray-600 text-sm mt-2">{pub.authors}</p>
+              {pub.volume && <p class="text-gray-500 text-sm">{pub.volume}</p>}
+              <a 
+                href={pub.doi} 
+                target="_blank" 
+                rel="noopener" 
+                class="inline-flex items-center gap-2 mt-3 text-primary-500 text-sm font-medium hover:underline"
+              >
+                <i class="fas fa-external-link-alt"></i>
+                View Publication
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <!-- Preprints -->
+  <SectionContainer background="gray">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-8 flex items-center gap-3">
+      <i class="fas fa-file-alt text-primary-500"></i>
+      Preprints & Under Review
+    </h2>
+    
+    <div class="space-y-6">
+      {preprints.map((pub) => (
+        <article class="p-6 bg-white rounded-lg border-l-4 border-amber-500 hover:translate-x-1 transition-transform duration-300">
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-600">
+            {pub.journal} ({pub.year})
+          </span>
+          <h3 class="font-display text-lg font-semibold text-gray-900 mt-2 leading-snug">
+            {pub.title}
+          </h3>
+          <p class="text-gray-600 text-sm mt-2">{pub.authors}</p>
+          {pub.note && (
+            <p class="text-amber-600 text-sm mt-2 font-medium">
+              <i class="fas fa-clock mr-1"></i>
+              {pub.note}
+            </p>
+          )}
+          <a 
+            href={pub.doi} 
+            target="_blank" 
+            rel="noopener" 
+            class="inline-flex items-center gap-2 mt-3 text-primary-500 text-sm font-medium hover:underline"
+          >
+            <i class="fas fa-external-link-alt"></i>
+            View Preprint
+          </a>
+        </article>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <!-- Book Chapters -->
+  <SectionContainer background="white">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-8 flex items-center gap-3">
+      <i class="fas fa-bookmark text-primary-500"></i>
+      Book Chapters
+    </h2>
+    
+    <div class="space-y-6">
+      {bookChapters.map((chapter) => (
+        <article class="p-6 bg-gray-50 rounded-lg border-l-4 border-emerald-500 hover:translate-x-1 transition-transform duration-300">
+          <span class="text-xs font-semibold uppercase tracking-wider text-emerald-600">
+            {chapter.publisher} ({chapter.year})
+          </span>
+          <h3 class="font-display text-lg font-semibold text-gray-900 mt-2 leading-snug">
+            {chapter.title}
+          </h3>
+          <p class="text-gray-600 text-sm mt-2">{chapter.authors}</p>
+          <p class="text-gray-500 text-sm italic">In: {chapter.book}</p>
+          <a 
+            href={chapter.doi} 
+            target="_blank" 
+            rel="noopener" 
+            class="inline-flex items-center gap-2 mt-3 text-primary-500 text-sm font-medium hover:underline"
+          >
+            <i class="fas fa-external-link-alt"></i>
+            View Chapter
+          </a>
+        </article>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <Footer />
+</Layout>

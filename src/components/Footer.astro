@@ -1,0 +1,59 @@
+---
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { icon: "fab fa-linkedin", href: "https://www.linkedin.com/in/asim-waqas-7773b248", label: "LinkedIn" },
+  { icon: "fab fa-github", href: "https://github.com/Waasem", label: "GitHub" },
+  { icon: "fas fa-graduation-cap", href: "https://scholar.google.com/citations?user=vq-Mr-sAAAAJ&hl=en", label: "Google Scholar" },
+  { icon: "fab fa-orcid", href: "https://orcid.org/0000-0002-6834-4710", label: "ORCID" },
+];
+---
+
+<footer class="bg-gray-900 text-white py-12 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h3 class="font-display text-xl font-semibold mb-4">Asim Waqas, Ph.D.</h3>
+        <p class="text-gray-400 text-sm">
+          Applied Research Scientist<br />
+          Moffitt Cancer Center
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li><a href="/research" class="hover:text-white transition-colors">Research</a></li>
+          <li><a href="/publications" class="hover:text-white transition-colors">Publications</a></li>
+          <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href="https://lab.moffitt.org/Rasool/" target="_blank" rel="noopener" class="hover:text-white transition-colors">Lab Rasool</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Connect</h4>
+        <div class="flex gap-4">
+          {socialLinks.map((link) => (
+            <a 
+              href={link.href} 
+              target="_blank" 
+              rel="noopener" 
+              aria-label={link.label}
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:bg-primary-500 hover:text-white transition-all"
+            >
+              <i class={link.icon}></i>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+      <p>
+        &copy; {currentYear} Asim Waqas. All rights reserved. | 
+        <a href="https://lab.moffitt.org/Rasool/" target="_blank" rel="noopener" class="hover:text-white">Lab Rasool</a> at 
+        <a href="https://moffitt.org" target="_blank" rel="noopener" class="hover:text-white">Moffitt Cancer Center</a>
+      </p>
+    </div>
+  </div>
+</footer>

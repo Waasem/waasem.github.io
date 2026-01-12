@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Footer from '../components/Footer.astro';
+import { presentations, awards, memberships } from '../data/presentations.js';
+
+const researchProjects = [
+  {
+    title: "Multimodal Cancer Outcome Prediction",
+    description: "Developing deep learning frameworks like SeNMo and PARADIGM that integrate multi-omics data (genomics, transcriptomics, proteomics, epigenomics), pathology images, and clinical records for improved survival prediction across 32 cancer types.",
+    highlights: [
+      "Self-normalizing neural networks for pan-cancer prognostication",
+      "Graph-based models leveraging heterogeneous data embeddings",
+      "Foundation model-driven multimodal AI with HONeYBEE framework"
+    ],
+    icon: "fas fa-brain"
+  },
+  {
+    title: "Digital Pathology & Foundation Models",
+    description: "Revolutionizing diagnostic pathology through generative AI and foundation models, enabling automated tissue detection, tumor classification, and biomarker identification from histopathological images.",
+    highlights: [
+      "Uncertainty-aware AI for enhanced tissue detection accuracy",
+      "Expert evaluation of LLM reasoning in diagnostic pathology",
+      "Integration of vision-language models in healthcare"
+    ],
+    icon: "fas fa-microscope"
+  },
+  {
+    title: "Early Cancer Detection",
+    description: "Building personalized risk assessment models using low-dose CT screening data to improve early detection of lung and breast cancer, enabling better treatment outcomes and quality of life.",
+    highlights: [
+      "Longitudinal fusion of LDCT data for lung cancer risk prediction",
+      "Post-hoc analysis of National Lung Cancer Screening Trial",
+      "Personalized future cancer risk assessment"
+    ],
+    icon: "fas fa-lungs"
+  },
+  {
+    title: "Medical Large Language Models",
+    description: "Evaluating and deploying private, local LLMs for medical data processing, including extraction of discrete variables from clinical records, ICD billing, and cancer registry automation.",
+    highlights: [
+      "M-Llama: Local LLM for cancer registry data extraction",
+      "Consensus-based reasoning for pathology report analysis",
+      "Diagnostic reasoning evaluation in radiology and pathology"
+    ],
+    icon: "fas fa-robot"
+  },
+  {
+    title: "Privacy-Preserving Federated Learning",
+    description: "Implementing federated learning approaches for multi-institutional medical imaging research, enabling collaborative model training while preserving patient privacy and data security.",
+    highlights: [
+      "Uncertainty quantification in medical imaging",
+      "Distributed intelligence for early lung cancer detection",
+      "Foundation federated learning for multi-source data integration"
+    ],
+    icon: "fas fa-shield-alt"
+  },
+  {
+    title: "Immunotherapy Response Prediction",
+    description: "Developing accurate biomarkers to identify patient sub-populations that will benefit most from immunotherapy treatment, improving treatment efficacy and resource allocation.",
+    highlights: [
+      "Genetic markers and treatment response analysis",
+      "Survival outcome prediction for immunotherapy",
+      "Targeted prevention strategies development"
+    ],
+    icon: "fas fa-dna"
+  }
+];
+---
+
+<Layout title="Research | Asim Waqas, Ph.D.">
+  <Navbar />
+  
+  <div class="pt-24 pb-8 px-6 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <p class="section-label">Research</p>
+      <h1 class="section-title text-4xl md:text-5xl">Research Interests</h1>
+      <p class="text-gray-600 mt-4 max-w-3xl mx-auto">
+        My research focuses on developing AI/ML solutions for oncology, with emphasis on multimodal learning, 
+        digital pathology, and clinical applications of large language models.
+      </p>
+    </div>
+  </div>
+  
+  <!-- Research Projects -->
+  <SectionContainer background="white">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-10 flex items-center gap-3">
+      <i class="fas fa-flask text-primary-500"></i>
+      Current Research Projects
+    </h2>
+    
+    <div class="space-y-8">
+      {researchProjects.map((project) => (
+        <div class="card p-8">
+          <div class="flex items-start gap-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-primary-500 to-accent-light rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`${project.icon} text-white text-xl`}></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">{project.title}</h3>
+              <p class="text-gray-600 mb-4">{project.description}</p>
+              <ul class="space-y-2">
+                {project.highlights.map((highlight) => (
+                  <li class="flex items-center gap-2 text-sm text-gray-700">
+                    <i class="fas fa-check-circle text-primary-500 text-xs"></i>
+                    {highlight}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <!-- Presentations -->
+  <SectionContainer background="gray">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-10 flex items-center gap-3">
+      <i class="fas fa-microphone-alt text-primary-500"></i>
+      Selected Presentations
+    </h2>
+    
+    <div class="grid md:grid-cols-2 gap-4">
+      {presentations.slice(0, 8).map((pres) => (
+        <div class="p-4 bg-white rounded-lg border border-gray-200">
+          <span class="text-xs font-semibold text-primary-500 uppercase tracking-wider">{pres.type} • {pres.year}</span>
+          <h4 class="font-semibold text-gray-900 mt-2 text-sm leading-snug">{pres.title}</h4>
+          <p class="text-gray-600 text-xs mt-2">{pres.venue}</p>
+          {pres.location && <p class="text-gray-500 text-xs">{pres.location}</p>}
+        </div>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <!-- Awards -->
+  <SectionContainer background="white">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-10 flex items-center gap-3">
+      <i class="fas fa-trophy text-primary-500"></i>
+      Honors & Awards
+    </h2>
+    
+    <div class="grid md:grid-cols-2 gap-4">
+      {awards.map((award) => (
+        <div class="p-4 bg-gray-50 rounded-lg border border-gray-200 flex gap-4">
+          <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-award text-white"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-900 text-sm">{award.title}</h4>
+            <p class="text-gray-600 text-xs mt-1">{award.organization}</p>
+            {award.description && <p class="text-gray-500 text-xs mt-1">{award.description}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <!-- Professional Memberships -->
+  <SectionContainer background="gray">
+    <h2 class="font-display text-2xl font-semibold text-gray-900 mb-10 flex items-center gap-3">
+      <i class="fas fa-users text-primary-500"></i>
+      Professional Memberships
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {memberships.map((mem) => (
+        <div class="p-4 bg-white rounded-lg border border-gray-200 text-center">
+          <h4 class="font-semibold text-gray-900 text-sm">{mem.organization}</h4>
+          <p class="text-primary-500 text-xs mt-1 font-medium">{mem.period}</p>
+        </div>
+      ))}
+    </div>
+  </SectionContainer>
+  
+  <Footer />
+</Layout>
