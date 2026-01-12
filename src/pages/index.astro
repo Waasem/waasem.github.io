@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Header from '../components/Header.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import Education from '../components/Education.astro';
+import Publications from '../components/Publications.astro';
+import Footer from '../components/Footer.astro';
+
+const researchAreas = [
+  {
+    icon: "fas fa-brain",
+    title: "Multimodal Deep Learning",
+    description: "Developing frameworks like SeNMo and PARADIGM that integrate multi-omics data, pathology images, and clinical records for improved cancer outcome prediction across 32 cancer types."
+  },
+  {
+    icon: "fas fa-microscope",
+    title: "Digital Pathology & AI",
+    description: "Leveraging generative AI and foundation models to revolutionize diagnostic pathology, enhance tissue detection, and enable automated analysis of histopathological images."
+  },
+  {
+    icon: "fas fa-lungs",
+    title: "Early Cancer Detection",
+    description: "Building personalized risk assessment models using low-dose CT screening data to improve early detection of lung and breast cancer."
+  },
+  {
+    icon: "fas fa-robot",
+    title: "Medical LLMs",
+    description: "Evaluating and deploying private, local large language models for extracting structured data from clinical records, pathology reports, and cancer registries."
+  },
+  {
+    icon: "fas fa-shield-alt",
+    title: "Federated Learning",
+    description: "Implementing privacy-preserving federated learning approaches for multi-institutional medical imaging research with uncertainty quantification."
+  },
+  {
+    icon: "fas fa-dna",
+    title: "Immunotherapy Biomarkers",
+    description: "Developing computational biomarkers to identify patient sub-populations with better survival outcomes for immunotherapy treatments."
+  }
+];
+
+const stats = [
+  { number: "465+", label: "Citations" },
+  { number: "12+", label: "Journal Papers" },
+  { number: "20+", label: "Conference Papers" },
+  { number: "50+", label: "Peer Reviews" }
+];
+
+const experience = [
+  { period: "2025 - Present", title: "Applied Research Scientist", org: "Moffitt Cancer Center" },
+  { period: "2024 - 2025", title: "Applied Post Doctoral Fellow", org: "Moffitt Cancer Center" },
+  { period: "2022 - 2024", title: "Graduate Research Fellow", org: "Moffitt Cancer Center / USF" }
+];
+---
+
+<Layout title="Asim Waqas, Ph.D. | Applied Research Scientist">
+  <Navbar />
+  <Header />
+  
+  <!-- About Section -->
+  <SectionContainer id="about" background="white">
+    <div class="text-center mb-16">
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Background & Expertise</h2>
+    </div>
+    
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="space-y-6 text-gray-600">
+        <p class="text-lg text-gray-800">
+          I am an Applied Research Scientist at H. Lee Moffitt Cancer Center and Research Institute, 
+          working at the intersection of artificial intelligence and oncology. My research focuses on 
+          developing innovative machine learning frameworks for cancer diagnosis, prognosis, and treatment optimization.
+        </p>
+        <p>
+          I earned my Ph.D. (summa cum laude) in Electrical Engineering from the University of South Florida, 
+          where my dissertation explored graph theory for robust deep networks and graph learning for 
+          multimodal cancer analysis. My work spans multimodal data integration, digital pathology, 
+          federated learning for medical imaging, and the application of large language models in healthcare.
+        </p>
+        <p>
+          Prior to academia, I accumulated over 15 years of industry experience in IT infrastructure, 
+          data center architecture, and middleware administration across government and international organizations.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4">
+        {stats.map((stat) => (
+          <div class="card text-center">
+            <div class="font-display text-4xl font-semibold text-primary-500 mb-2">{stat.number}</div>
+            <div class="text-sm text-gray-600 uppercase tracking-wider">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </SectionContainer>
+  
+  <!-- Research Section -->
+  <SectionContainer id="research" background="gray">
+    <div class="text-center mb-16">
+      <p class="section-label">Research Focus</p>
+      <h2 class="section-title">Current Research Areas</h2>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {researchAreas.map((area) => (
+        <div class="card">
+          <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-light rounded-lg flex items-center justify-center mb-4">
+            <i class={`${area.icon} text-white text-lg`}></i>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-gray-900 mb-3">{area.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{area.description}</p>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-10">
+      <a href="/research" class="btn btn-outline">
+        <i class="fas fa-arrow-right"></i>
+        Learn More About My Research
+      </a>
+    </div>
+  </SectionContainer>
+  
+  <!-- Publications Section -->
+  <SectionContainer id="publications" background="white">
+    <div class="text-center mb-16">
+      <p class="section-label">Publications</p>
+      <h2 class="section-title">Selected Publications</h2>
+    </div>
+    
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+      A selection of recent peer-reviewed publications. For a complete list, visit my 
+      <a href="https://scholar.google.com/citations?user=vq-Mr-sAAAAJ&hl=en" target="_blank" rel="noopener" class="text-primary-500 hover:underline">
+        Google Scholar
+      </a> profile.
+    </p>
+    
+    <Publications limit={5} />
+  </SectionContainer>
+  
+  <!-- Experience Section -->
+  <SectionContainer id="experience" background="gray">
+    <div class="text-center mb-16">
+      <p class="section-label">Background</p>
+      <h2 class="section-title">Education & Experience</h2>
+    </div>
+    
+    <div class="grid lg:grid-cols-2 gap-12">
+      <Education />
+    </div>
+    
+    <div class="mt-12">
+      <h3 class="font-display text-2xl font-semibold text-gray-900 mb-8 flex items-center gap-3">
+        <i class="fas fa-briefcase text-primary-500"></i>
+        Work Experience
+      </h3>
+      
+      <div class="relative pl-8 border-l-2 border-gray-200 space-y-6">
+        {experience.map((exp) => (
+          <div class="relative">
+            <div class="absolute -left-[2.55rem] top-1 w-4 h-4 bg-white border-4 border-primary-500 rounded-full"></div>
+            <span class="text-xs font-semibold text-primary-500 uppercase tracking-wider">{exp.period}</span>
+            <h4 class="font-semibold text-gray-900 mt-1">{exp.title}</h4>
+            <p class="text-gray-600 text-sm">{exp.org}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </SectionContainer>
+  
+  <Footer />
+</Layout>
